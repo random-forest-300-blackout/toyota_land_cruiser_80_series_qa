@@ -1,6 +1,6 @@
 # Toyota Land Cruiser 80 Series Forum Q&A
 
-This project is a Retrieval-Augmented Generation (RAG) system designed to answer questions about the Toyota Land Cruiser 80 Series. It uses a web scraper to gather data from the IH8MUD online forum (https://forum.ih8mud.com/), processes the text data, and creates a searchable vector database. A Streamlit web application (https://toyotalandcruiser80seriesapp-kktf6pjfgckhuvifnugbzj.streamlit.app/) then allows users to ask questions and receive relevant answers extracted from the forum conversations.
+This project is a Retrieval-Augmented Generation (RAG) system designed to answer questions about the Toyota Land Cruiser 80 Series. It uses a web scraper to gather data from the IH8MUD online forum (https://forum.ih8mud.com/), processes the text data, and creates a searchable vector database. A [Streamlit web application](https://toyotalandcruiser80seriesapp-kktf6pjfgckhuvifnugbzj.streamlit.app/) then allows users to ask questions and receive relevant answers extracted from the forum conversations.
 
 ## 🚙 How It Works
 
