@@ -70,7 +70,7 @@ To run the application, you must execute the scripts in the following order:
     ```sh
     python forum_comments_to_faiss.py
     ```
-    This will create a folder named `faiss_index_forum_10k_sample` in your directory.
+    This will create a folder named `faiss_index_forum_100k_sample` in your directory.
 
 3.  **Launch the Streamlit App:**
     Once the index is created, you can start the web application.

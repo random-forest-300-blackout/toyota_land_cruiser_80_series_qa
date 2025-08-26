@@ -15,6 +15,11 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
+# --- 0. Setup ---
+SAMPLE_SIZE = 50000 # 50k comments
+SAMPLE_SIZE_STR = f"{SAMPLE_SIZE//1000}k" if SAMPLE_SIZE % 1000 == 0 else str(SAMPLE_SIZE)
+INDEX_NAME = f"faiss_index_forum_{SAMPLE_SIZE_STR}_sample"
+
 # --- 1. Setup and Initial Download for NLTK ---
 try:
     nltk.data.find('corpora/words')
@@ -24,7 +29,6 @@ except LookupError:
 from nltk.corpus import words
 
 # --- 2. Enhanced Data Cleaning and Preprocessing ---
-
 print("Setting up the cleaning and processing functions...")
 
 def build_vocabulary(all_texts):
@@ -114,7 +118,6 @@ for index, row in tqdm(df.iterrows(), total=df.shape[0], desc="Reading threads")
 print(f"Found a total of {len(all_comments_raw)} comments.")
 
 # --- Downsize the dataset by taking a random sample ---
-SAMPLE_SIZE = 10000
 if len(all_comments_raw) > SAMPLE_SIZE:
     print(f"Downsizing dataset to a random sample of {SAMPLE_SIZE} comments...")
     documents_to_process = random.sample(all_comments_raw, SAMPLE_SIZE)
@@ -164,14 +167,14 @@ vector_store = FAISS.from_documents(tqdm(chunks, desc="Embedding"), embedding_mo
 end_time = time.time()
 
 # Use a new name for the downsized index
-vector_store.save_local("faiss_index_forum_10k_sample")
+vector_store.save_local(INDEX_NAME)
 print(f"FAISS index created and saved in {end_time - start_time:.2f} seconds.")
 print("-" * 20)
 
 # --- Example Usage ---
 print("Performing a similarity search on the sampled index...")
 loaded_vector_store = FAISS.load_local(
-    "faiss_index_forum_10k_sample", 
+    INDEX_NAME, 
     embedding_model
 )
 query = "What did mudgudgeon say about buying a rusty vehicle?"

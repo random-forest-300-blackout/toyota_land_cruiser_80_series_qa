@@ -24,7 +24,7 @@ def load_resources():
         )
         
         vector_store = FAISS.load_local(
-            "faiss_index_forum_10k_sample", 
+            "faiss_index_forum_50k_sample", 
             embedding_model,
             # This is needed for newer langchain versions
             allow_dangerous_deserialization=True 
@@ -43,7 +43,7 @@ Welcome! This app is a demonstration of a Retrieval-Augmented Generation (RAG) s
 Ask a question about the Toyota Land Cruiser 80 Series, and the model will search a database of real forum conversations to find the most relevant answers.
 
 **How it works:**
-1.  Over 10,000 forum comments were scraped, cleaned, and processed.
+1.  Over 50,000 forum comments were scraped, cleaned, and processed.
 2.  Each comment was converted into a numerical vector (embedding).
 3.  When you ask a question, it's also converted into a vector.
 4.  The app performs a similarity search to find the most relevant comments from the forum database.
