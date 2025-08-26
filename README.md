@@ -55,7 +55,7 @@ To run the application, you must execute the scripts in the following order:
 1.  **Run the Web Scraper:**
     This script will scrape the forum and create the `forum_conversations_with_details_YYYYMMDD.csv` file.
     ```sh
-    python web_scraper.py
+    python scraper.py
     ```
     *Note: This process can take a very long time as it scrapes over 3,500 pages.*
 
