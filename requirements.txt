@@ -1,0 +1,10 @@
+pandas
+beautifulsoup4
+sentence-transformers
+faiss-cpu
+langchain
+langchain-community
+streamlit
+pyspellchecker
+nltk
+tqdm
