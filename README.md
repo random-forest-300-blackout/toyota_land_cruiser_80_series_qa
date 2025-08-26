@@ -6,8 +6,8 @@ This project is a Retrieval-Augmented Generation (RAG) system designed to answer
 
 The project follows a three-step process:
 
-1.  **Scrape Data**: The `web_scraper.py` script fetches thousands of forum posts from the IH8MUD 80-series technical discussion board. The raw conversations are saved to a CSV file.
-2.  **Create Vector Index**: The `forum_comments_to_faiss.py` script cleans the scraped text, processes a sample of 10,000 comments, and converts them into numerical vectors using a sentence-transformer model. These vectors are then stored in a FAISS index for efficient similarity searching.
+1.  **Scrape Data**: The `scraper.py` script fetches thousands of forum posts from the IH8MUD 80-series technical discussion board. The raw conversations are saved to a CSV file.
+2.  **Create Vector Index**: The `forum_comments_to_faiss.py` script cleans the scraped text, processes a sample of 50,000 comments, and converts them into numerical vectors using a sentence-transformer model. These vectors are then stored in a FAISS index for efficient similarity searching.
 3.  **Question & Answer**: The `app.py` script launches a Streamlit web application. When a user asks a question, the app converts the query into a vector and searches the FAISS index to find the most similar (and therefore most relevant) forum comments. The top results are then displayed to the user.
 
 ---
@@ -70,7 +70,7 @@ To run the application, you must execute the scripts in the following order:
     ```sh
     python forum_comments_to_faiss.py
     ```
-    This will create a folder named `faiss_index_forum_10k_sample` in your directory.
+    This will create a folder named `faiss_index_forum_50k_sample` in your directory.
 
 3.  **Launch the Streamlit App:**
     Once the index is created, you can start the web application.
@@ -83,7 +83,7 @@ To run the application, you must execute the scripts in the following order:
 
 ## 📄 File Descriptions
 
-* **`web_scraper.py`**: A Python script that uses `requests` and `BeautifulSoup` to scrape conversation data from the IH8MUD forum.
+* **`scraper.py`**: A Python script that uses `requests` and `BeautifulSoup` to scrape conversation data from the IH8MUD forum.
 * **`forum_comments_to_faiss.py`**: Processes the raw CSV data. It cleans the text, embeds the comments using a Hugging Face model, and saves them into a FAISS vector index.
 * **`app.py`**: A Streamlit application that provides a user interface for the Q&A system. It loads the FAISS index and allows users to perform similarity searches with their questions.
 * **`requirements.txt`**: A list of all the Python libraries required to run the project.
