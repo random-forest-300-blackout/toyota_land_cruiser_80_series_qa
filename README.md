@@ -7,7 +7,7 @@ This project is a Retrieval-Augmented Generation (RAG) system designed to answer
 The project follows a three-step process:
 
 1.  **Scrape Data**: The `web_scraper.py` script fetches thousands of forum posts from the IH8MUD 80-series technical discussion board. The raw conversations are saved to a CSV file.
-2.  **Create Vector Index**: The `forum_comments_to_faiss.py` script cleans the scraped text, processes a sample of 10,000 comments, and converts them into numerical vectors using a sentence-transformer model. These vectors are then stored in a FAISS index for efficient similarity searching.
+2.  **Create Vector Index**: The `forum_comments_to_faiss.py` script cleans the scraped text, processes a sample of 50,000 comments, and converts them into numerical vectors using a sentence-transformer model. These vectors are then stored in a FAISS index for efficient similarity searching.
 3.  **Question & Answer**: The `app.py` script launches a Streamlit web application. When a user asks a question, the app converts the query into a vector and searches the FAISS index to find the most similar (and therefore most relevant) forum comments. The top results are then displayed to the user.
 
 ---
